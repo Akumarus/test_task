@@ -1,8 +1,8 @@
 #include "output_thread.h"
 #include "data_process.h"
 #include <iostream>
-#include <WinSock2.h>
-#include <WS2tcpip.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
 
 //output_thread::output_thread(buffer &buf) : buf(buf) {}
 
