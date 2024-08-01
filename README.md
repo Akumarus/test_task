@@ -9,6 +9,7 @@ Program1:
 ```sh
 cd program1
 mkdir build
+cd build
 cmake -S ../src -B .
 make
 ./program1
@@ -18,6 +19,7 @@ Program2:
 ```sh
 cd program2
 mkdir build
+cd build
 cmake -S ../src -B .
 make
 ./program2
