@@ -1,7 +1,7 @@
 Тестовое задание для стажировки
 =======
 -------
-Ссылкак на открытый репозиторий git: [[https://github.com/Akumarus/test_task.git](https://github.com/Akumarus/test_task.git)}
+Ссылкак на открытый репозиторий git: [[https://github.com/Akumarus/test_task.git](https://github.com/Akumarus/test_task.git)]
 
 Сборкак проектов:
 
