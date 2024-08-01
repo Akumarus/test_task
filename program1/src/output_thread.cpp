@@ -3,24 +3,31 @@
 #include <iostream>
 
 
-output_thread::output_thread(buffer &buf, Socket &socket) : buf(buf), socket(socket) {}
+Output_thread::Output_thread(Buffer &buffer, Socket &socket) : buffer(buffer), socket(socket) {}
 
-void output_thread::send_data()
+void Output_thread::send_data()
 {
     while(true)
     {
-        std::string data = buf.get_data();
+        if(!socket.connect(socket.serv_addr))
+            std::cout << "Connection failed" << std::endl;
+
+    while(true)
+    {
+        std::string data = buffer.get_data();
 
         if(data.empty()) break;
         
-        int sum = data_process::calculate_sum(data);
+        int sum = Data_process::calculate_sum(data);
         std::cout << "Converted data: " << data << std::endl;
         std::cout << "Sum of numeric data: " << sum << std::endl;
 
         std::string send_data = std::to_string(sum);
-        socket.send(send_data);
-        std::cout << "Sent data: " << sum << std::endl;
+        if(!socket.send(send_data))
+            std::cout << "Send failed, attempting to reconnect... " << sum << std::endl;
+        else
+            std::cout << "Sent data: " << sum << std::endl;
     }
-
+    }
 }
 

@@ -3,7 +3,7 @@
 
 #include <string>
 
-class data_process
+class Data_process
 {
 private:
     /* data */

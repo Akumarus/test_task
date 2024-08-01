@@ -3,9 +3,9 @@
 #include <iostream>
 #include <thread>
 
-input_thread::input_thread(buffer &buf) : buf(buf) {}
+Input_thread::Input_thread(Buffer &buffer) : buffer(buffer) {}
 
-void input_thread::read_data()
+void Input_thread::read_data()
 {
     while(true)
     {
@@ -13,12 +13,12 @@ void input_thread::read_data()
         std::cout << "Enter string (number only, less then 64 characters)\t: ";
         std::cin >> input;
 
-        if(data_process::is_valid_input(input))
+        if(Data_process::is_valid_input(input))
         {
             std::cout << "Thread ID: " << std::this_thread::get_id() << std::endl;
-            std::string processed = data_process::process_input(input);
+            std::string processed = Data_process::process_input(input);
             std::cout << "Data sent to buffer: " << std::endl;
-            buf.add_data(processed);
+            buffer.add_data(processed);
         }
         else
         {

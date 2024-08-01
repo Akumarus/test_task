@@ -7,19 +7,17 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 
-class Socket
+class Server_socket
 {
 private:
     int sock;
-    
-public:
     struct sockaddr_in serv_addr;
+    int addrlen = sizeof(serv_addr);
+public:
+    Server_socket(int PORT);
+    ~Server_socket();
 
-    Socket(int PORT, const char* SERVER_IP);
-    ~Socket();
-
-    bool connect(struct sockaddr_in &addr);
-    bool send(std::string &data);
+    int accept_connection();
 };
 
 #endif // SOCKET_H

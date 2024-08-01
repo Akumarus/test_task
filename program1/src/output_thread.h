@@ -4,13 +4,13 @@
 #include "buffer.h"
 #include "socket.h"
 
-class output_thread
+class Output_thread
 {
 private:
-    buffer &buf;
+    Buffer &buffer;
     Socket &socket;
 public:
-    output_thread(buffer &buf, Socket &socket);
+    Output_thread(Buffer &buffer, Socket &socket);
     void send_data();
 };
 

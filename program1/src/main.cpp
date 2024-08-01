@@ -2,30 +2,27 @@
 #include "input_thread.h"
 #include "output_thread.h"
 #include "buffer.h"
-#include "socket.h"
 #include <thread>
 
 
-#define PORT 1244
+#define PORT 1243
 #define SERVER_IP "127.0.0.1"
 
 int main() {
 
-    buffer buf;
-    Socket socket;
-    
-    struct sockaddr_in serv_addr;
-    serv_addr.sin_family = AF_INET;
-    serv_addr.sin_port = htons(PORT);
-    inet_pton(AF_INET, SERVER_IP, &serv_addr.sin_addr);
-    
-    socket.connect(serv_addr);
+    /* 
+        1. Input thread read data from console and send it to buufer;
+        2. Output thread read data from buffer and send it with socket to program2;
+    */
 
-    input_thread input(buf);
-    output_thread output(buf, socket);
+    Buffer buffer;
+    Socket socket(PORT, SERVER_IP);
 
-    std::thread t1(&input_thread::read_data, &input);
-    std::thread t2(&output_thread::send_data, &output);
+    Input_thread input_thread(buffer);
+    Output_thread output_thread(buffer, socket);
+
+    std::thread t1(&Input_thread::read_data, &input_thread);
+    std::thread t2(&Output_thread::send_data, &output_thread);
 
     t1.join();
     t2.join();

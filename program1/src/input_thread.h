@@ -3,12 +3,12 @@
 
 #include "buffer.h"
 
-class input_thread
+class Input_thread
 {
 private:
-    buffer &buf;
+    Buffer &buffer;
 public:
-    input_thread(buffer &buf);
+    Input_thread(Buffer &buffer);
     void read_data();
 };
 

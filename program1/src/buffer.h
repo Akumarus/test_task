@@ -6,10 +6,10 @@
 #include <mutex>
 #include <condition_variable>
 
-class buffer
+class Buffer
 {
 private:
-    std::queue<std::string> buf;
+    std::queue<std::string> buffer;
     std::mutex mtx;
     std::condition_variable cv;
     bool data_ready = false;
