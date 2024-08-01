@@ -2,13 +2,15 @@
 #define OUTPUT_THREAD_H
 
 #include "buffer.h"
+#include "socket.h"
 
 class output_thread
 {
 private:
-    buffer buf;
+    buffer &buf;
+    Socket &socket;
 public:
-    output_thread(buffer &buf);
+    output_thread(buffer &buf, Socket &socket);
     void send_data();
 };
 

@@ -11,4 +11,6 @@ add_executable(${PROJECT_NAME}
                 output_thread.cpp
                 output_thread.h
                 buffer.cpp
-                buffer.h)
+                buffer.h
+                socket.cpp
+                socket.h)
